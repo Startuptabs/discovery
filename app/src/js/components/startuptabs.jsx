@@ -12,20 +12,27 @@ const {Navbar, Nav, NavItem} = require('react-bootstrap');
 class StartupTabs extends Base {
   constructor() {
     super();
+
+    var view = localStorage['view']? localStorage['view']: 'Background';
+
     this.state = {
-      view: 'Background'
+      view: view
     }
   }
 
+  componentDidMount(){
+    //check localStorage for last view state
+
+  }
+
   setView(view){
+    localStorage['view'] = view;
     this.setState({view: view});
   }
 
   active(view) {
     return (view == this.state.view)
   }
-
-
 
   render() {
     var view = '';
