@@ -1,4 +1,8 @@
-# Koa App
+# discovery
+Discovering new startups
+
+# To Run
+``docker-compose up``
 
 ## Launching using Docker
 `docker-compose up`
