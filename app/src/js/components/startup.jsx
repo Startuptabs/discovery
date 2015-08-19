@@ -1,6 +1,7 @@
 'use strict';
 
 const { React, Base } = require('./base');
+const { Well } = require('react-bootstrap');
 
 class Startup extends Base {
   constructor() {
@@ -8,13 +9,18 @@ class Startup extends Base {
   }
 
   render() {
+    var style={
+      paddingTop: '60px',
+      minHeight: '700px',
+      borderRadius: '25px'
+    }
     return (
-        <div>
-          <img style={{width: '75px'}}src={this.props.logo} />
+        <Well className="text-center" style={style}>
+          <img style={{height: '150px'}}src={this.props.logo} />
           <h2>{this.props.name}</h2>
           <h3>{this.props.tagline}</h3>
-          <img src={this.props.screenshot} />
-        </div>
+          <img className="img-responsive img-thumbnail" src={this.props.screenshot} />
+        </Well>
     );
   }
 }

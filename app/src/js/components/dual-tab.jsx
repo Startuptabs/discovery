@@ -2,6 +2,7 @@
 
 const { React, Base } = require('./base');
 const Startup = require('./startup');
+const {Grid,Row,Col} = require('react-bootstrap');
 
 class DualTab extends Base {
   constructor() {
@@ -26,19 +27,23 @@ class DualTab extends Base {
 
   render() {
     return (
-        <div>
+        <Grid>
+          <Row>
           {
             this.state.startups.map((startup) => {
-              return <Startup
+              return <Col md='6'>
+                <Startup
                   key={startup.id}
                   logo={startup.logo}
                   name={startup.name}
                   tagline={startup.tagline}
                   screenshot={startup.screenshot}
                   />
+              </Col>
             })
           }
-        </div>
+          </Row>
+        </Grid>
     );
   }
 }

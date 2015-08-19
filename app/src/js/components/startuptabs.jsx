@@ -44,7 +44,7 @@ class StartupTabs extends Base {
     };
 
     return (
-      <div>
+      <div style={{marginTop: '60px'}}>
         <div style={menuStyle}>
           <Navbar brand={<a href="#">Startuptabs</a>} toggleNavKey={0}>
             <Nav left eventKey={0}>

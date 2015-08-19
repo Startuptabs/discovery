@@ -4,6 +4,6 @@ const React = require('react');
 const Startuptabs = require('./components/startuptabs.jsx');
 
 React.render(
-    <Startuptabs />,
+    <Startuptabs style={{marginTop: '60px'}}/>,
     document.querySelector('#app-container')
 );
