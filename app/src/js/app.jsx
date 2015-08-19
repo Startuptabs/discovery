@@ -5,6 +5,7 @@ const React = require('react');
 const BackgroundTab = require('./components/background-tab');
 const SingleTab = require('./components/single-tab');
 const DualTab = require('./components/dual-tab');
+const QuadTab = require('./components/quad-tab');
 
 /*
 React.render(
@@ -17,7 +18,14 @@ React.render(
 );*/
 
 
+/*
+ React.render(
+ <DualTab />,
+ document.querySelector('#background-tab')
+ );
+*/
+
 React.render(
-    <DualTab />,
+    <QuadTab />,
     document.querySelector('#background-tab')
 );
