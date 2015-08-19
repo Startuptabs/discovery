@@ -1,7 +1,7 @@
 'use strict';
 
 const { React, Base } = require('./base');
-console.log('huh');
+
 class BackgroundTab extends Base {
   constructor() {
     super();

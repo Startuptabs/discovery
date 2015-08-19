@@ -12,7 +12,6 @@ const React = require('react');
 class Base extends React.Component {
   constructor(props, shouldAutoBind = true) {
     super(props);
-    console.log('wtf');
     // If options `shouldAutoBind` is true (default),
     // bind all methods to class instance
     if (shouldAutoBind) {
