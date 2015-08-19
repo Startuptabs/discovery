@@ -10,38 +10,38 @@ const React = require('react');
  * Based on: https://github.com/SimonDegraeve/react-class-helper/blob/master/lib/component.js
  */
 class Base extends React.Component {
-    constructor(props, shouldAutoBind = true) {
-        super(props);
-
-        // If options `shouldAutoBind` is true (default),
-        // bind all methods to class instance
-        if (shouldAutoBind) {
-            this.autoBind();
-        }
+  constructor(props, shouldAutoBind = true) {
+    super(props);
+    console.log('wtf');
+    // If options `shouldAutoBind` is true (default),
+    // bind all methods to class instance
+    if (shouldAutoBind) {
+      this.autoBind();
     }
+  }
 
-    /**
-     * Bind an array of method name to class instance
-     * @param {Array} methods An array of function names to bind
-     */
-    bind(methods) {
-        methods.forEach(method => {
-            this[method] = this[method].bind(this);
-        });
-    }
+  /**
+   * Bind an array of method name to class instance
+   * @param {Array} methods An array of function names to bind
+   */
+  bind(methods) {
+    methods.forEach(method => {
+      this[method] = this[method].bind(this);
+    });
+  }
 
-    /**
-     * Bind all methods to class instance
-     */
-    autoBind() {
-        this.bind(
-            Object.getOwnPropertyNames(this.constructor.prototype).filter(prop => {
-                if (typeof this[prop] === 'function') {
-                    return true;
-                }
-            })
-        );
-    }
+  /**
+   * Bind all methods to class instance
+   */
+  autoBind() {
+    this.bind(
+        Object.getOwnPropertyNames(this.constructor.prototype).filter(prop => {
+          if (typeof this[prop] === 'function') {
+            return true;
+          }
+        })
+    );
+  }
 }
 
 exports.Base = Base;

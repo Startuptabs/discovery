@@ -18,15 +18,6 @@ gulp.task('nodemon', function() {
   }).on('restart');
 });
 
-// run mocha test when changes detected in files
-gulp.task('watch', function() {
-  // gulp's built in watch function
-  gulp.watch(
-    ['**/*.{html,js,jsx}', '!node_modules/**'], // blurbs of files to watch
-    ['mocha'] // tasks to run when the above files change
-  );
-});
-
 // run mocha test in the test directory
 gulp.task('mocha', function() {
   //process.env.PORT = 4001;
@@ -92,4 +83,4 @@ const bundleBrowserify = function(b) {
 
 // running gulp (or in our ES6 case, node --harmony `which gulp`) will run the
 // task in this array
-gulp.task('default', ['nodemon', 'mocha', 'watch', 'watchify']);
+gulp.task('default', ['nodemon', 'mocha', 'watchify']);
