@@ -16,7 +16,7 @@ class StartupTabs extends Base {
     var view = localStorage['view']? localStorage['view']: 'Background';
 
     this.state = {
-      view: view
+      view
     }
   }
 

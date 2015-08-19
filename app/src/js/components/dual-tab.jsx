@@ -31,9 +31,8 @@ class DualTab extends Base {
           <Row>
           {
             this.state.startups.map((startup) => {
-              return <Col md='6'>
+              return <Col md={6} key={startup.id}>
                 <Startup
-                  key={startup.id}
                   logo={startup.logo}
                   name={startup.name}
                   tagline={startup.tagline}
