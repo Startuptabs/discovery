@@ -59,10 +59,11 @@ class StartupTabs extends Base {
         <div style={menuStyle}>
           <Navbar brand={<a href="http://www.startuptabs.com" target="_blank">Startuptabs</a>} toggleNavKey={0}>
             <Nav left eventKey={0}>
-              <NavItem active={this.active('Background')} eventKey={1} onClick={this.setView.bind(null, 'Background')}>Background</NavItem>
-              <NavItem active={this.active('Single')} eventKey={2} onClick={this.setView.bind(null, 'Single')}>Single</NavItem>
-              <NavItem active={this.active('Dual')} eventKey={3} onClick={this.setView.bind(null, 'Dual')}><I glyph="glyphicon-th-large" /> Dual</NavItem>
-              <NavItem active={this.active('Quad')} eventKey={4} onClick={this.setView.bind(null, 'Quad')}>Quad</NavItem>
+              {this.views.map( (view,index) => {
+                return (
+                    <NavItem key={index} active={this.active(view)} eventKey={index} onClick={this.setView.bind(null, view)}>{view}</NavItem>
+                )
+              })}
             </Nav>
           </Navbar>
         </div>

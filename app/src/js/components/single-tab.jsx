@@ -21,6 +21,13 @@ class SingleTab extends Base {
         name: 'Gethoneybadger',
         tagline: 'Startup information with a click',
         siteUrl: 'http://www.gethoneybadger.com'
+      },
+      {
+        id: 3,
+        logo: 'http://www.amplfy.co/images/logo.png',
+        name: 'Amplfy',
+        tagline: 'Social Media Campaign Orchestration',
+        siteUrl: 'http://www.amplfy.co'
       }
     ];
 
