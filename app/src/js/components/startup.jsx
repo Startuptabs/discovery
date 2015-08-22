@@ -2,9 +2,11 @@
 
 const { React, Base } = require('./base');
 const { Well } = require('react-bootstrap');
+const extend = require('extend');
+
 
 class Startup extends Base {
-  constructor() {
+  constructor(test) {
     super();
   }
 
@@ -14,8 +16,12 @@ class Startup extends Base {
       minHeight: '700px',
       borderRadius: '25px'
     }
+
+    var prop_style = extend(style, this.props.style);
+
+
     return (
-        <Well className="text-center" style={style}>
+        <Well className="text-center" style={prop_style}>
           <img style={{height: '150px'}}src={this.props.logo} />
           <h2>{this.props.name}</h2>
           <h3>{this.props.tagline}</h3>
