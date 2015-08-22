@@ -5,24 +5,28 @@ const BackgroundTab = require('./background-tab');
 const SingleTab = require('./single-tab');
 const DualTab = require('./dual-tab');
 const QuadTab = require('./quad-tab');
-const {Navbar, Nav, NavItem} = require('react-bootstrap');
+const {Navbar, Nav, NavItem, Glyphicon} = require('react-bootstrap');
+//var localStorage = (typeof localStorage == "undefined")?{}:localStorage;
+var localStorage = require('localStorage');
 
 
+const I = Glyphicon;
 
 class StartupTabs extends Base {
-  constructor() {
+  constructor(props) {
     super();
 
-    var view = localStorage['view']? localStorage['view']: 'Background';
+    this.views = [ 'Background', 'Single', 'Dual', 'Quad' ];
+
+    var view = props.view;
+
+    if(!view){
+      view = localStorage['view']? localStorage['view']: 'Background';
+    }
 
     this.state = {
       view
     }
-  }
-
-  componentDidMount(){
-    //check localStorage for last view state
-
   }
 
   setView(view){
@@ -53,11 +57,11 @@ class StartupTabs extends Base {
     return (
       <div style={{marginTop: '60px'}}>
         <div style={menuStyle}>
-          <Navbar brand={<a href="#">Startuptabs</a>} toggleNavKey={0}>
+          <Navbar brand={<a href="http://www.startuptabs.com" target="_blank">Startuptabs</a>} toggleNavKey={0}>
             <Nav left eventKey={0}>
               <NavItem active={this.active('Background')} eventKey={1} onClick={this.setView.bind(null, 'Background')}>Background</NavItem>
               <NavItem active={this.active('Single')} eventKey={2} onClick={this.setView.bind(null, 'Single')}>Single</NavItem>
-              <NavItem active={this.active('Dual')} eventKey={3} onClick={this.setView.bind(null, 'Dual')}>Dual</NavItem>
+              <NavItem active={this.active('Dual')} eventKey={3} onClick={this.setView.bind(null, 'Dual')}><I glyph="glyphicon-th-large" /> Dual</NavItem>
               <NavItem active={this.active('Quad')} eventKey={4} onClick={this.setView.bind(null, 'Quad')}>Quad</NavItem>
             </Nav>
           </Navbar>

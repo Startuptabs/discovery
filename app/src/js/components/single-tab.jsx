@@ -6,23 +6,38 @@ const Iframe = require('react-iframe');
 class SingleTab extends Base {
   constructor() {
     super();
-    this.state = {
-      id: 1,
-      logo: 'http://www.startuptabs.com/img/startuptabs_b.png',
-      name: 'Startuptabs',
-      tagline: 'Startup discovery and tracking',
-      siteUrl: 'http://www.startuptabs.com'
-    }
+
+    var startups = [
+      {
+        id: 1,
+        logo: 'http://www.startuptabs.com/img/startuptabs_b.png',
+        name: 'Startuptabs',
+        tagline: 'Startup discovery and tracking',
+        siteUrl: 'http://www.startuptabs.com'
+      },
+      {
+        id: 2,
+        logo: 'http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/rywslqmzzn06nyeodyxw.jpg',
+        name: 'Gethoneybadger',
+        tagline: 'Startup information with a click',
+        siteUrl: 'http://www.gethoneybadger.com'
+      }
+    ];
+
+    this.state = {startups: startups};
   }
 
   render() {
+    var random = Math.round( Math.random() * (this.state.startups.length - 1) );
+    var startup = this.state.startups[ random ];
+
     return (
         <div>
-          <img style={{width: '50px'}} src={this.state.logo} />
-          {this.state.name} - {this.state.tagline}
+          <img style={{width: '50px'}} src={startup.logo} />
+          {startup.name} - {startup.tagline}
 
           <div style={{position: 'relative'}}>
-            <Iframe url={this.state.siteUrl}></Iframe>
+            <Iframe url={startup.siteUrl}></Iframe>
           </div>
         </div>
     );

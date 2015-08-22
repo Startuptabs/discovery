@@ -8,6 +8,10 @@ const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
 const source = require('vinyl-source-stream');
+const concat = require('gulp-concat');
+const minifyCss = require('gulp-minify-css');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
 
 // this not only starts the app but will also monitor for file changes and
 // restart the app when changes are detected
@@ -36,6 +40,7 @@ gulp.task('test-once', function() {
 // node --harmony `which gulp` browserify
 gulp.task('browserify', function() {
   const b = getBrowserifyInstance();
+  b.transform(babelify);
   return bundleBrowserify(b);
 })
 
@@ -53,6 +58,14 @@ gulp.task('watchify', function() {
   });
   bundleBrowserify(w);
 });
+
+gulp.task('css-bundle', function() {
+  return gulp.src('app/src/css/*.css')
+      .pipe(minifyCss())
+      .pipe(concat('style.min.css'))
+      .pipe(gulp.dest('app/assets/css/'));
+});
+
 
 const getBrowserifyInstance = function() {
   // create browserify instance
@@ -79,9 +92,11 @@ const bundleBrowserify = function(b) {
       }
     })
     .pipe(source('bundle.js'))
+      .pipe(buffer())
+      .pipe(uglify())
     .pipe(gulp.dest('app/assets/js'));
 };
 
 // running gulp (or in our ES6 case, node --harmony `which gulp`) will run the
 // task in this array
-gulp.task('default', ['nodemon', 'mocha', 'watchify']);
+gulp.task('default', ['nodemon', 'mocha', 'watchify', 'css-bundle']);
