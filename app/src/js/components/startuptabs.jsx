@@ -107,9 +107,9 @@ class StartupTabs extends Base {
         view = <BackgroundTab background={this.getBackground()} />;
         break;
       case 'Single':
-        view = <SingleTab startup={this.getStartup()} />;
+        view = <div><BackgroundTab background={this.getBackground()} /><SingleTab startup={this.getStartup()} /></div>;
         break;
-      case 'Dual': view = <DualTab />; break;
+      case 'Dual': view = <div><BackgroundTab background={this.getBackground()} /> <DualTab /> </div>; break;
       case 'Quad': view = <QuadTab />; break;
     }
 
@@ -121,7 +121,7 @@ class StartupTabs extends Base {
     };
 
     return (
-      <div style={{marginTop: '45px'}}>
+      <div style={{marginTop: '40px'}}>
         <div style={menuStyle}>
           <Navbar brand={<a href="http://www.startuptabs.com" target="_blank">Startuptabs</a>} toggleNavKey={0}>
             <Nav left eventKey={0}>

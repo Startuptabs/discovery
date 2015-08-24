@@ -14,6 +14,7 @@ Get more backgrounds when queue size hits 2
 class BackgroundTab extends Base {
   constructor(props) {
     super(props);
+    console.log(props);
     /*this.state = {
       backgrounds: [
         'http://landt.co/wp-content/uploads/2014/06/Startups.png',
@@ -44,7 +45,7 @@ class BackgroundTab extends Base {
 
     return (
         <Spring defaultValue={{val: 0 }} endValue={{val:1}}>
-          {interpolated => <div style={_.merge(style,{opacity: interpolated.val}) }></div>}
+          {interpolated => <div style={_.merge(style,{opacity: interpolated.val}) }>{this.props.children}</div>}
         </Spring>
     );
   }

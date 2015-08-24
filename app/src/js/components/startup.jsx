@@ -14,8 +14,9 @@ class Startup extends Base {
     var style={
       paddingTop: '60px',
       minHeight: '700px',
-      borderRadius: '25px'
-    }
+      borderRadius: '25px',
+      backgroundColor: 'rgba(0,0,0,.25)'
+    };
 
     var prop_style = extend(style, this.props.style);
 
