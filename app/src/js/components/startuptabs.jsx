@@ -59,13 +59,56 @@ class StartupTabs extends Base {
     return background;
   }
 
+  getStartup(){
+    var startup_position = localStorage['startup_position']? localStorage['startup_position']:0;
+    var startups = localStorage['startups']? localStorage['startups']: [
+      {
+        id: 1,
+        logo: 'http://www.startuptabs.com/img/startuptabs_b.png',
+        name: 'Startuptabs',
+        tagline: 'Startup discovery and tracking',
+        siteUrl: 'http://www.startuptabs.com',
+        screenshot: 'https://lh6.googleusercontent.com/BDRbmJLOkHF0UUOVj44_Qquv19SB3ujoxF7ltR5kfodMzM1Za37hcRBEscr5NFDvUgUJhS0ZQA=s640-h400-e365-rw'
+      },
+      {
+        id: 2,
+        logo: 'http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/rywslqmzzn06nyeodyxw.jpg',
+        name: 'Gethoneybadger',
+        tagline: 'Startup information with a click',
+        siteUrl: 'http://www.gethoneybadger.com',
+        screenshot: 'https://lh3.googleusercontent.com/QaqIb8-UFdwnc2N17b8bVWIOiEbiripjerLFpfumGkmv7KpgflSowo8m2jXwXXIZyL3KDhb177w=s640-h400-e365-rw'
+      },
+      {
+        id: 3,
+        logo: 'http://www.amplfy.co/images/logo.png',
+        name: 'Amplfy',
+        tagline: 'Social Media Campaign Orchestration',
+        siteUrl: 'http://www.amplfy.co',
+        screenshot: 'https://lh3.googleusercontent.com/QaqIb8-UFdwnc2N17b8bVWIOiEbiripjerLFpfumGkmv7KpgflSowo8m2jXwXXIZyL3KDhb177w=s640-h400-e365-rw'
+      }
+    ];
+
+    var startup = startups[startup_position];
+
+    if(startup_position >= startups.length - 1){
+      localStorage['startup_position'] = 0;
+    }else{
+      startup_position++;
+      localStorage['startup_position'] = startup_position;
+    }
+
+    return startup;
+  }
+
   render() {
     var view = '';
     switch(this.state.view){
       case 'Background':
         view = <BackgroundTab background={this.getBackground()} />;
         break;
-      case 'Single': view = <SingleTab />; break;
+      case 'Single':
+        view = <SingleTab startup={this.getStartup()} />;
+        break;
       case 'Dual': view = <DualTab />; break;
       case 'Quad': view = <QuadTab />; break;
     }
