@@ -37,7 +37,7 @@ router
   })
   .get('/react', function *(next) {
     yield this.render('react',{
-      react: react.renderToString(st({view:'Dual'}))
+      react: react.renderToString(st({}))
     });
   })
   .get('/json', function *(next) {
