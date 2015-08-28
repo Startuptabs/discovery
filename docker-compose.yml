@@ -3,5 +3,5 @@ app:
   ports:
   - "4000:4000"
   environment:
-    PORT: 9999
+    PORT: 4000
   
